@@ -8,12 +8,14 @@ function App() {
   const [init, setInit] = useState(false);
   //firebase의 인증 상태가 중 로그인 한 유저라면 
   const [isLogin, setIsLogin] = useState(false);
+  const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       //로그인된 사용자라면
       if (user) {
         setIsLogin(true);
+        setUserObj(user);
       }
       //로그인 하지 않은 사용자라면 
       else {
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLogin={isLogin} /> : "initial.."}
+      {init ? <AppRouter isLogin={isLogin} userObj={userObj} /> : "initial.."}
       <footer>copy @ hyemin</footer>
     </>
   );
