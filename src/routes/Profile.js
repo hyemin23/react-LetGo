@@ -1,136 +1,114 @@
-import { dbService } from 'fbInstance';
-import React, { createElement, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { authService, dbService } from 'fbInstance';
+import React, { useEffect, useState } from 'react'
+import { useHistory } from "react-router-dom";
+
+function Profile({ userObj, refreshUser }) {
+    const history = useHistory();
+
+    const [newProfileObj, setNewProfileObj] = useState("");
+    const [onEditToggle, setOnEditToggle] = useState(false);
+    const [editObj, setEditObj] = useState({
+
+        displayName: ""
+    });
 
 
-const Profile = ({ history, userObj }) => {
 
-    console.log("--===")
-    console.log(history);
-    console.log("--===")
-
-    const [todos, setTodos] = useState([]);
-    //text-area 값
-    const [areaValue, setAreaValue] = useState("");
-    //게시글 Id
-    const [selectPostId, setSelectPostId] = useState("");
-    //구식의 방법
-    /*const newTwit = async () => {
-        const firedbget = await dbService.collection("twit").get();
-        firedbget.forEach((doc) => {
-            const obj = {
-                ...doc.data()
-            };
-
-            setTodos((prev) => [obj, ...prev]);
-        });
+    const onLogOutClick = () => {
+        authService.signOut();
+        history.push("/");
     }
-    */
 
-    //db에 저장된 내 글 가져오기
+
+    //내가 쓴 게시물만 보기
+    const getMyPosts = async () => {
+        //파이어베이스의 조건문 where 이용
+        const nProfile = await dbService.collection("newSend").where("writerId", "==", userObj.uid).orderBy("date", "asc").get();
+
+        const newProfileObj = nProfile.docs.map((doc) => ({
+            postId: doc.id
+            , ...doc.data()
+        }));
+        setNewProfileObj(newProfileObj);
+    }
+
+
+
     useEffect(() => {
-
-        //newTwit();
-
-        //추천하는 방법
-        dbService.collection("twit").onSnapshot((snapshot) => {
-            //console.log(snapshot.docs);
-            const newTwit = snapshot.docs.map((doc) => ({
-                id: doc.id
-                , ...doc.data()
-
-            }));
-            setTodos(newTwit);
-        });
+        getMyPosts();
     }, []);
 
-    //삭제 or 수정
-    const onClick = async (e, postId) => {
-
-        e.preventDefault();
-        const { name } = e.target;
-
-        //삭제시
-        if (name === "onDelete") {
-            window.confirm("삭제하시겠습니까?");
-            await dbService.doc(`twit/${postId}/`).delete();
-        }
 
 
-        //수정시
-        else if (name === "onEdit") {
-
-            //수정버튼 클릭 시 disabled 속성 없애기
-            e.target.parentNode.parentNode.firstChild.firstChild.removeAttribute('disabled');
-
-            //text area 수정내용 저장
-
-            setAreaValue(e.target.parentNode.parentNode.firstChild.firstChild.value);
-            //최종 수정완료
-
-            //수정된 게시글 번호 넣어주기
-            setSelectPostId(postId);
-
-            //e.target.parentNode.parentNode.firstChild.firstChild.value
-        }
+    //프로필 수정
+    const onEditProfile = (e) => {
+        //내 정보 수정이면 폼 변경
+        setOnEditToggle(true);
     }
 
-    //변경 감지 내용
-    useEffect(() => {
-        onEdit();
-    }, [areaValue]);
+
+    //입력된 정보들 수정
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        //수정할 정보들 업데이트
+        await userObj.updateProfile(editObj).then(() => {
+            alert("수정되었습니다!");
+
+            //유저 새로고침
+            refreshUser();
+
+        }).catch((error) => {
+            alert(error.message);
+        });
 
 
-    //최종 수정완료 
-    const onEdit = () => {
 
-        console.log("edits");
-        if (selectPostId !== "" && selectPostId !== null && selectPostId !== undefined) {
+        setEditObj({});
+        setOnEditToggle(false);
 
-            dbService.doc(`twit/${selectPostId}/`).update({
-                text: areaValue
-            }).then((data) => {
-                //홈으로 돌아가게 만들어주기
-                //history back을 이용해서 보내줘야하나?
+    }
 
-                alert("수정되었습니다.");
-            });
+    //입력된 정보들 상태값에 저장
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "displayName") {
+            setEditObj({ "displayName": value });
         }
-
-        //수정 완료 후 다시 disabled 상태로 바꿔놓기
-        // e.target.parentNode.parentNode.firstChild.firstChild.addAttribute('disabled');
-
-        setSelectPostId("");
-
     }
 
     return (
-        <div>
-            Profile
-            <Link to="/">홈으로</Link>
+        <>
+            <button onClick={onLogOutClick}>로그아웃</button>
+            <button type="button" onClick={onEditProfile}>내 정보 수정</button>
 
-            <h2>내가 쓴 글 목록</h2>
-            {todos.map((todo) => (
-                todo.userId === userObj.uid ?
-                    <>
-                        <form>
-                            <div>
-                                <textarea disabled>{todo.text}</textarea>
-                                <p>작성일 : {todo.date}</p>
-                            </div>
-                            <div>
-                                <input type="button" name="onDelete" value="삭제"
-                                    onClick={(e) => onClick(e, todo.id)} />
-                                <input type="button" name="onEdit" value="수정"
-                                    onClick={(e) => onClick(e, todo.id)}
-                                />
-                            </div>
-                        </form>
-                    </>
-                    : ""
-            ))}
-        </div>
-    );
-};
+
+            {onEditToggle &&
+                <>
+                    <form>
+
+                        <input type="text" placeholder="변경하실 닉네임을 입력해주세요."
+                            name="displayName"
+                            value={editObj.writerId}
+                            onChange={onChange}
+                        />
+                        <button type="submit" onClick={onSubmit}>수정</button>
+                    </form>
+
+                </>
+            }
+            <hr />
+            <h2>
+                {`${userObj.displayName}님이 쓴 글`}
+            </h2>
+            {newProfileObj && newProfileObj.map((profile => (
+                <>
+                    <p>{`내용 : ${profile.text} 작성일 : ${profile.date} 작성자:${profile.writerId}`} </p>
+                </>
+            )))}
+
+        </>
+    )
+}
 
 export default Profile;

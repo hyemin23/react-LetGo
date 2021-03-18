@@ -1,60 +1,73 @@
-import { authService, dbService } from 'fbInstance';
-import React, { useState } from 'react'
-import { Link, Route, Router } from 'react-router-dom';
+import AddProfile from "components/AddProfile";
+import Npost from "components/Npost";
+import { authService, dbService } from "fbInstance";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-function Home({ userObj }) {
 
-    const [todayText, setTodayText] = useState("");
+const Home = ({ userObj }) => {
 
-    //db저장 액션
-    const onChange = (e) => {
+
+    //게시글 목록들 가져오기 
+    const [newPosts, setNewPosts] = useState([]);
+
+
+    useEffect(() => {
+        dbService.collection("newSend").onSnapshot((snapshot) => {
+
+            const newObj = snapshot.docs.map(doc => ({
+                postId: doc.id
+                , ...doc.data()
+            }));
+
+            setNewPosts(newObj);
+        });
+    }, []);
+
+
+    const onLogout = async (e) => {
         e.preventDefault();
-        const { name, value } = e.target;
 
-        if (name === 'todayText') {
-            setTodayText(value);
-        };
-    }
-
-    //로그아웃 액션
-    const onClick = async (e) => {
-        e.preventDefault();
-        const { name } = e.target;
-
-        if (name === "logout") {
-            authService.signOut();
-        }
-        else if (name === "send") {
-
-            //firebase db에 저장
-            await dbService.collection("twit").add({
-                text: todayText
-                , date: new Date().getFullYear()
-                , userId: userObj.uid
-                , onEdit: false
-            })
-                .then((docRef) => {
-                    alert("성공적으로 등록되었습니다.");
-                }).catch((error) => {
-                    alert("에러가 발생하였습니다 : ", error);
-                });
-            setTodayText("");
+        try {
+            const logout = await authService.signOut();
+            console.log(logout);
+            alert("로그아웃 성공!");
+        } catch (error) {
+            console.log(error);
+            alert("로그아웃 실패");
         }
     }
+
     return (
-        <div>
-            <h2>Home</h2>
-            <input type="submit" name="logout" onClick={onClick} value="로그아웃" />
-            <Link to="/profile"  >프로필</Link>
-            <input type="text"
-                placeholder="오늘 하루는 어땠나요?"
-                name="todayText"
-                onChange={onChange}
-                value={todayText}
-            >
-            </input>
-            <input type="button" name="send" onClick={onClick} value="share" />
-        </div>
+        <>
+            <h2>홈화면</h2>
+            <div>
+                <Link to="/profile">{`${userObj.displayName}님의 프로필`}</Link>
+                <input type="button" onClick={onLogout} value="로그아웃" />
+            </div>
+
+            <AddProfile userObj={userObj} />
+
+
+            <div>
+                <h2>게시글 목록</h2>
+                {newPosts && newPosts.map((post) =>
+                    (
+                        <>
+                            {post && (
+                                <Npost
+                                    key={post.id}
+                                    post={post}
+                                    userPostCheck={post.writerId === userObj.uid}
+
+                                />
+                            )}
+                        </>
+                    )
+                )}
+            </div>
+
+        </>
     )
 }
 
