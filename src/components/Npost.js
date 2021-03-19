@@ -1,3 +1,5 @@
+import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dbService, fbStorage } from 'fbInstance';
 import React, { useState } from 'react'
 
@@ -6,26 +8,23 @@ function Npost({ post, userPostCheck }) {
     const [updateToggle, setUpdateToggle] = useState(false);
     const [updateText, setUpdateText] = useState(post.text);
 
-    const onClick = async (e, postId) => {
+    const onRemove = async () => {
+        console.log("onRemove");
+        const ok = window.confirm("정말 삭제하시겠습니까?");
+        if (ok) {
 
-        const { name } = e.target;
+            //게시글 삭제
+            await dbService.doc(`newSend/${post.postId}`).delete();
 
-        //삭제 액션
-        if (name === "delete") {
-            const ok = window.confirm("정말 삭제하시겠습니까?");
-            if (ok) {
-
-                //게시글 삭제
-                await dbService.doc(`newSend/${post.postId}`).delete();
-                //사진 삭제
-                await fbStorage.refFromURL(post.resultUrl).delete();
+            //사진이 있었다면 사진 삭제
+            if (!!post.resultUrl) await fbStorage.refFromURL(post.resultUrl).delete();
 
 
-                alert("삭제되었습니다.");
+            alert("삭제되었습니다.");
 
-            } else {
-                return false;
-            }
+
+        } else {
+            return false;
         }
     }
 
@@ -82,18 +81,16 @@ function Npost({ post, userPostCheck }) {
 
                         {
                             userPostCheck && (
-                                <>
-                                    <input type="button" name="delete"
-                                        onClick={(e) => { onClick(e, post.postId) }}
-                                        value="삭제"
-                                    />
-                                    <input
-                                        type="button"
-                                        onClick={onToggle}
-                                        name="onEdit"
-                                        value="수정"
-                                    />
-                                </>
+                                <div class="post__actions">
+                                    <span onClick={onRemove} name="delete" style={{ cursor: "pointer" }}>
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </span>
+
+                                    <span onClick={onToggle} name="onEdit"
+                                        style={{ cursor: "pointer" }}>
+                                        <FontAwesomeIcon icon={faPencilAlt} />
+                                    </span>
+                                </div>
                             )}
                     </>
                 )}

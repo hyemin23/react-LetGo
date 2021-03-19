@@ -1,7 +1,13 @@
 import { authService, firebaseInstance } from "fbInstance";
 import { useState } from "react";
 import { Link, Route, HashRouter as Router } from "react-router-dom";
-
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faTwitter,
+    faGoogle,
+    faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Auth = () => {
 
@@ -59,58 +65,66 @@ const Auth = () => {
             provider = new firebaseInstance.auth.GithubAuthProvider();
         }
 
-        const result = await authService.signInWithPopup(provider).then((data) => {
-            console.log(data);
-
-            const token = data.credential.accessToken;
-            const user = data.user;
-
-            console.log(token, user);
+        await authService.signInWithPopup(provider).then((data) => {
+            alert("로그인 성공!");
         });
-
-
     }
 
-
     return (
-        <div>
+        <div className="container">
+            <FontAwesomeIcon
+                icon={faTwitter}
+                color={"#04AAFE"}
+                size="3x"
+                style={{ marginBottom: 30 }}
+            />
+            <h2>P<em>(ost)</em> &amp; S<em>(end)</em> </h2>
+
             <form onSubmit={onSubmit}>
-                <input type="text" placeholder="Email" required
-                    onChange={onChange}
-                    name="email"
-                    value={email} />
-                <input type="password" placeholder="Password" required
-                    onChange={onChange}
-                    name="passowrd"
-                    password={password} />
-                <button type="submit" value="LogIn" name="login"
-                >로그인</button>
-                {error &&
-                    <p>
-                        {error}
-                    </p>}
-            </form>
-            <div>
-                <button type="button" name="google" onClick={socialLogin}>
-                    Google 로그인
-                </button>
-                <button type="button" name="git" onClick={socialLogin}>
-                    Github 로그인
-                </button>
                 <div>
-                    <ul>
-                        <li>
-                            <Link to="/joinForm" >회원가입</Link>
-                        </li>
-                    </ul>
+                    <p>로그인</p>
+                    <input
+                        type="text" placeholder="Email" required
+                        onChange={onChange}
+                        name="email"
+                        value={email}
+                        className="authInput"
+                    />
 
+                    <input
+                        type="password" placeholder="Password" required
+                        onChange={onChange}
+                        name="passowrd"
+                        password={password}
+                        className="authInput"
+                    />
+                    <div>
+                        <button type="submit" value="LogIn" name="login"
+                            className="authSubmitBtn"
+                        >Login</button>
+                        {error &&
+                            <p>
+                                {error}
+                            </p>}
+
+                    </div>
                 </div>
+            </form>
 
+
+            <div className="authBtns">
+                <button type="button" name="google" onClick={socialLogin} className="authBtn">
+                    Google 로그인<FontAwesomeIcon icon={faGoogle} />
+                </button>
+
+                <button type="button" name="git" onClick={socialLogin} className="authBtn">
+                    Github 로그인<FontAwesomeIcon icon={faGithub} />
+                </button>
+
+                <button className="authBtn">
+                    <Link to="/joinForm" >회원가입</Link>
+                </button>
             </div>
-
-            <footer>
-                footer
-            </footer>
         </div>
     )
 }

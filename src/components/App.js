@@ -2,7 +2,8 @@
 import { authService } from "fbInstance";
 import { useEffect, useState } from "react";
 import AppRouter from "./AppRouter";
-
+import "../css/App.css";
+import styled from "styled-components";
 function App() {
 
   //init이 false면 router를 숨김
@@ -51,10 +52,13 @@ function App() {
   return (
     <>
       {
+
         init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} refreshUser={refreshUser} /> : "Initializing..."
+
       }
     </>
   );
 }
+
 
 export default App;
