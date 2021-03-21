@@ -1,9 +1,7 @@
-import { authService, dbService } from 'fbInstance';
-import React, { useEffect, useState } from 'react'
-import { useHistory } from "react-router-dom";
+import { dbService } from 'fbInstance';
+import React, { useEffect, useState } from 'react';
 
 function Profile({ userObj, refreshUser }) {
-    const history = useHistory();
 
     const [newProfileObj, setNewProfileObj] = useState("");
     const [onEditToggle, setOnEditToggle] = useState(false);
@@ -12,23 +10,19 @@ function Profile({ userObj, refreshUser }) {
         displayName: ""
     });
 
-
-
-    const onLogOutClick = () => {
-        authService.signOut();
-        history.push("/");
-    }
-
-
     //내가 쓴 게시물만 보기
     const getMyPosts = async () => {
         //파이어베이스의 조건문 where 이용
-        const nProfile = await dbService.collection("newSend").where("writerId", "==", userObj.uid).orderBy("date", "asc").get();
+        const nProfile = await dbService.collection("newSend").where("writerId", "==", userObj.uid).orderBy("date", "desc").get();
+
+        console.log(nProfile);
+
 
         const newProfileObj = nProfile.docs.map((doc) => ({
             postId: doc.id
             , ...doc.data()
         }));
+
         setNewProfileObj(newProfileObj);
     }
 
@@ -78,36 +72,50 @@ function Profile({ userObj, refreshUser }) {
     }
 
     return (
-        <>
-            <button onClick={onLogOutClick}>로그아웃</button>
-            <button type="button" onClick={onEditProfile}>내 정보 수정</button>
+        <div className="profile_change_form">
+            <span onClick={onEditProfile}
+            >
+                닉네임 변경
+            </span>
+
 
 
             {onEditToggle &&
                 <>
-                    <form>
-
+                    <form className="profile_change">
                         <input type="text" placeholder="변경하실 닉네임을 입력해주세요."
                             name="displayName"
                             value={editObj.writerId}
                             onChange={onChange}
                         />
-                        <button type="submit" onClick={onSubmit}>수정</button>
+
+                        <div>
+                            <button type="submit" onClick={onSubmit}>
+                                변경
+                        </button>
+                            <button type="cancel" onClick={() => setOnEditToggle((prev) => !prev)} >
+                                취소
+                        </button>
+                        </div>
                     </form>
 
                 </>
             }
             <hr />
-            <h2>
-                {`${userObj.displayName}님이 쓴 글`}
-            </h2>
-            {newProfileObj && newProfileObj.map((profile => (
-                <>
-                    <p>{`내용 : ${profile.text} 작성일 : ${profile.date} 작성자:${profile.writerId}`} </p>
-                </>
-            )))}
 
-        </>
+            {userObj &&
+                <h2>
+                    {`${userObj.displayName}님이 두고 간 목록`}
+                </h2>
+            }
+            <div className="profile_write">
+                {newProfileObj && newProfileObj.map((profile => (
+                    <div className="profile_write_form">
+                        <p>{`내용 : ${profile.text} 작성일 : ${profile.date}`} </p>
+                    </div>
+                )))}
+            </div>
+        </div>
     )
 }
 

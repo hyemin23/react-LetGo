@@ -48,30 +48,31 @@ function Npost({ post, userPostCheck }) {
 
     //토글이 true면 업데이트 창 보여주기
     return (
-        <>
+        <div className="newPost">
             {updateToggle ? (
                 <>
-
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} className="container newPostEdit">
                         <input type="text" value={updateText} onChange={onChange}
+                            className="formInput"
                         />
-                        <button type="submit" >
-                            수정
-                    </button>
+                        <div style={{ textAlign: "center" }}>
+                            <button type="submit" className="formBtn">
+                                수정
+                            </button>
+                            <input type="button" value="취소" onClick={onToggle} className="formCancelBtn" />
+                        </div>
                     </form>
-                    <input type="button" value="취소" onClick={onToggle} />
+
                 </>
             ) : (
                     <>
-
                         {
                             post.writerId &&
-                            <>
-
+                            <div className="wirte_Info">
                                 <p>{`내용 : ${post.text}`}</p>
                                 <p>날짜 : {post.date}</p>
-                                <p>작성자 : {post.writerId}</p>
-                            </>
+                                <p>작성자 :{post.writerId}</p>
+                            </div>
                         }
 
                         {
@@ -81,20 +82,21 @@ function Npost({ post, userPostCheck }) {
 
                         {
                             userPostCheck && (
-                                <div class="post__actions">
+                                <div class="post_actions">
                                     <span onClick={onRemove} name="delete" style={{ cursor: "pointer" }}>
-                                        <FontAwesomeIcon icon={faTrash} />
+                                        <FontAwesomeIcon icon={faTrash} color={"rgba(255,89,0)"} />
                                     </span>
 
                                     <span onClick={onToggle} name="onEdit"
                                         style={{ cursor: "pointer" }}>
-                                        <FontAwesomeIcon icon={faPencilAlt} />
+                                        <FontAwesomeIcon icon={faPencilAlt}
+                                            color={" rgb(95, 154, 242)"} />
                                     </span>
                                 </div>
                             )}
                     </>
                 )}
-        </>
+        </div>
     );
 
 }

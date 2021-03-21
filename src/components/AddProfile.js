@@ -1,3 +1,5 @@
+import { faCamera, faCameraRetro, faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dbService, fbStorage } from 'fbInstance';
 import React, { useState } from 'react'
 import { v4 as uuid } from "uuid";
@@ -75,27 +77,49 @@ function AddProfile({ userObj }) {
 
     return (
 
-        <div>
-            <form onSubmit={onSubmit}>
+
+        <form onSubmit={onSubmit} className="addedProfileForm">
+            <div className="addedProfileForm_input_container">
                 <input type="text" value={posts} onChange={onChange}
                     placeholder="오늘 하루는 어땠나요?"
-                    maxLength={200} />
-                <input type="file"
-                    accept="image/*"
-                    onChange={onFileChange}
-                />
-                <button type="submit">
-                    떨쳐버리기
-                    </button>
-                {attachment &&
-                    <div>
-                        <img src={attachment} width="50px" height="50px" />
-                        <button onClick={onClear}>Clear</button>
-                    </div>
-                }
+                    maxLength={200}
+                    className="addProfileInput" />
+                <button type="submit" className="addProfileSubmit">
+                    놓고가기
+                </button>
+            </div>
 
-            </form>
-        </div>
+            <label for="file-upload"
+                className="file-upload-label"
+            >
+                <span>함께 올리기</span>
+                <FontAwesomeIcon icon={faCameraRetro} />
+            </label>
+
+            <input type="file"
+                accept="image/*"
+                id="file-upload"
+                onChange={onFileChange}
+                style={{ opacity: 0 }}
+            />
+
+            {attachment && (
+                <div className="profile_image_uploaded">
+                    <img src={attachment}
+                        style={{ backgroundImage: attachment }}
+                    />
+                    <div className="image_cancel_btn">
+                        <span onClick={onClear}>
+                            <FontAwesomeIcon icon={faWindowClose}
+                                size="1.5x"
+                                color={"red"} />
+                        </span>
+                    </div>
+                </div>
+            )
+            }
+
+        </form>
     )
 }
 

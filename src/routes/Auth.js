@@ -8,6 +8,7 @@ import {
     faGoogle,
     faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { faHandHolding, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
 
@@ -28,14 +29,13 @@ const Auth = () => {
 
     }
 
+    //로그인
     const onSubmit = async (e) => {
 
         e.preventDefault();
 
         try {
-
-            const data = await authService.signInWithEmailAndPassword(email, password);
-            console.log(data);
+            await authService.signInWithEmailAndPassword(email, password);
         } catch (error) {
             console.log(error);
             setError(error.message);
@@ -56,8 +56,6 @@ const Auth = () => {
 
             console.log("google 로그인");
             provider = new firebaseInstance.auth.GoogleAuthProvider();
-
-
         }
         //깃허브 로그인
         else if (name === "git") {
@@ -71,26 +69,31 @@ const Auth = () => {
     }
 
     return (
-        <div className="container">
+        <div className="authContainer">
             <FontAwesomeIcon
-                icon={faTwitter}
-                color={"#04AAFE"}
+                icon={faHandHolding}
+                color={"#04AAFF"}
                 size="3x"
                 style={{ marginBottom: 30 }}
             />
-            <h2>P<em>(ost)</em> &amp; S<em>(end)</em> </h2>
+            <h2 style={{ fontSize: "25px", fontWeight: 600 }}>놓고(Go)
+                </h2>
+            <p style={{ marginTop: "14px", fontSize: "15px", }}> 가져갈게요. 두고 가세요.</p>
 
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="container">
+
                 <div>
-                    <p>로그인</p>
+
                     <input
                         type="text" placeholder="Email" required
                         onChange={onChange}
                         name="email"
                         value={email}
                         className="authInput"
+                        autoFocus
                     />
-
+                </div>
+                <div>
                     <input
                         type="password" placeholder="Password" required
                         onChange={onChange}
@@ -98,31 +101,36 @@ const Auth = () => {
                         password={password}
                         className="authInput"
                     />
-                    <div>
-                        <button type="submit" value="LogIn" name="login"
-                            className="authSubmitBtn"
-                        >Login</button>
-                        {error &&
-                            <p>
-                                {error}
-                            </p>}
-
-                    </div>
                 </div>
+
+                <button type="submit" value="LogIn" name="login"
+                    className="authInput authSubmit"
+                >Login</button>
+                {error &&
+                    <p className="authError">
+                        {error}
+                    </p>}
+
             </form>
 
 
             <div className="authBtns">
                 <button type="button" name="google" onClick={socialLogin} className="authBtn">
-                    Google 로그인<FontAwesomeIcon icon={faGoogle} />
+                    <FontAwesomeIcon icon={faGoogle} color={"#04AAFF"}
+                    />
+                    <p>Google 로그인</p>
                 </button>
 
                 <button type="button" name="git" onClick={socialLogin} className="authBtn">
-                    Github 로그인<FontAwesomeIcon icon={faGithub} />
+                    <FontAwesomeIcon icon={faGithub} color={"#04aaff"} />
+                    <p>Github 로그인</p>
                 </button>
 
                 <button className="authBtn">
-                    <Link to="/joinForm" >회원가입</Link>
+                    <Link to="/joinForm" style={{ textDecoration: "none", color: "black" }}>
+                        <FontAwesomeIcon icon={faUserPlus} color={"#04aaff"} />
+                        <p>회원가입</p>
+                    </Link>
                 </button>
             </div>
         </div>
