@@ -45,15 +45,15 @@ const Auth = () => {
     // 깃허브 구글 로그인 분기
     const socialLogin = async (e) => {
         e.preventDefault();
-        console.log(e.target);
         const { name } = e.target;
+        console.log("이름은:");
+        console.log(name);
 
         let provider;
 
         //구글 로그인
         //크롬은 팝업 창 안 열림
         if (name === "google") {
-
             console.log("google 로그인");
             provider = new firebaseInstance.auth.GoogleAuthProvider();
         }
@@ -118,18 +118,20 @@ const Auth = () => {
                 <button type="button" name="google" onClick={socialLogin} className="authBtn">
                     <FontAwesomeIcon icon={faGoogle} color={"#04AAFF"}
                     />
-                    <p>Google 로그인</p>
+                    Google Login
                 </button>
 
                 <button type="button" name="git" onClick={socialLogin} className="authBtn">
                     <FontAwesomeIcon icon={faGithub} color={"#04aaff"} />
-                    <p>Github 로그인</p>
+                    Git Login
                 </button>
 
                 <button className="authBtn">
                     <Link to="/joinForm" style={{ textDecoration: "none", color: "black" }}>
-                        <FontAwesomeIcon icon={faUserPlus} color={"#04aaff"} />
-                        <p>회원가입</p>
+                        <p>
+                            <FontAwesomeIcon icon={faUserPlus} color={"#04aaff"} />
+                        </p>
+                        회원가입
                     </Link>
                 </button>
             </div>
