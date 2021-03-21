@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-twitter/react-twitter/static/css/main.415e3a2d.chunk.css",
-    "main.js": "/react-twitter/react-twitter/static/js/main.ed52c346.chunk.js",
-    "main.js.map": "/react-twitter/react-twitter/static/js/main.ed52c346.chunk.js.map",
-    "runtime-main.js": "/react-twitter/react-twitter/static/js/runtime-main.e6829195.js",
-    "runtime-main.js.map": "/react-twitter/react-twitter/static/js/runtime-main.e6829195.js.map",
-    "static/js/2.cae355a1.chunk.js": "/react-twitter/react-twitter/static/js/2.cae355a1.chunk.js",
-    "static/js/2.cae355a1.chunk.js.map": "/react-twitter/react-twitter/static/js/2.cae355a1.chunk.js.map",
-    "index.html": "/react-twitter/react-twitter/index.html",
-    "static/css/main.415e3a2d.chunk.css.map": "/react-twitter/react-twitter/static/css/main.415e3a2d.chunk.css.map",
-    "static/js/2.cae355a1.chunk.js.LICENSE.txt": "/react-twitter/react-twitter/static/js/2.cae355a1.chunk.js.LICENSE.txt"
+    "main.css": "/react-twitter/static/css/main.415e3a2d.chunk.css",
+    "main.js": "/react-twitter/static/js/main.ed52c346.chunk.js",
+    "main.js.map": "/react-twitter/static/js/main.ed52c346.chunk.js.map",
+    "runtime-main.js": "/react-twitter/static/js/runtime-main.6e28f6b1.js",
+    "runtime-main.js.map": "/react-twitter/static/js/runtime-main.6e28f6b1.js.map",
+    "static/js/2.b0300dc7.chunk.js": "/react-twitter/static/js/2.b0300dc7.chunk.js",
+    "static/js/2.b0300dc7.chunk.js.map": "/react-twitter/static/js/2.b0300dc7.chunk.js.map",
+    "index.html": "/react-twitter/index.html",
+    "static/css/main.415e3a2d.chunk.css.map": "/react-twitter/static/css/main.415e3a2d.chunk.css.map",
+    "static/js/2.b0300dc7.chunk.js.LICENSE.txt": "/react-twitter/static/js/2.b0300dc7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e6829195.js",
-    "static/js/2.cae355a1.chunk.js",
+    "static/js/runtime-main.6e28f6b1.js",
+    "static/js/2.b0300dc7.chunk.js",
     "static/css/main.415e3a2d.chunk.css",
     "static/js/main.ed52c346.chunk.js"
   ]
