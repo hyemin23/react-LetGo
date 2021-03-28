@@ -4,8 +4,17 @@
   <h2 align="left">Project Name : "놓고"</h2>
 <hr/>
  > 말 못 할 사연이나 걱정거리들을 익명성 뒤에 거침없이 적고 떨쳐버리세요!
+<div width="100%">
+<img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+<img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%"display="block" border="0" box-sizing="border-box"/>
+</div>
 
-<img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" style="zoom:7%;" />
+<div width="100%">
+ <img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ <img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ </div>
+ 
+
 
 ### 기획의도
 <p>
