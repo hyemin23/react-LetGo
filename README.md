@@ -5,15 +5,16 @@
 <hr/>
  > 말 못 할 사연이나 걱정거리들을 익명성 뒤에 거침없이 적고 떨쳐버리세요!
 <div width="100%">
-<img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-<img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%"display="block" border="0" box-sizing="border-box"/>
+<img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+<img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="49%" height="50%" margin="0%" padding="0%"display="block" border="0" box-sizing="border-box"/>
 </div>
 
 <div width="100%">
- <img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
- <img src="https://user-images.githubusercontent.com/54235714/112762222-7e36fa80-9039-11eb-8575-0ffe6e0ce065.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ <img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ <img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
  </div>
  
+
 
 
 ### 기획의도
