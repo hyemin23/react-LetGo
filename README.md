@@ -2,7 +2,6 @@
 <h2 align="center"> Introduction </h2>
  URI : https://hyemin23.github.io/react-LetGo/
   <h2 align="left">Project Name : "놓고"</h2>
-<hr/>
 
 > 말 못 할 사연이나 걱정거리들을 익명성 뒤에 거침없이 적고 떨쳐버리세요!
  
