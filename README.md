@@ -7,21 +7,27 @@
  
 
 
+<p display="block" align="center">
 <img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+</p>
 
-<img src="https://user-images.githubusercontent.com/54235714/112763585-0ae4b700-9040-11eb-9f5d-acb9a4420e08.png" alt="main" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-
-
-
-<img src="https://user-images.githubusercontent.com/54235714/112763410-52b70e80-903f-11eb-8609-72660915d027.png" alt="main3" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-
+<div  width="100%">
+ <p display="inline-block !important" >
+<img src="https://user-images.githubusercontent.com/54235714/112763585-0ae4b700-9040-11eb-9f5d-acb9a4420e08.png" alt="main" width="20%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ </p>
+ <p display="inline-block !important"  >
+<img src="https://user-images.githubusercontent.com/54235714/112763410-52b70e80-903f-11eb-8609-72660915d027.png" alt="main3" width="20%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ </p>
+</div>
  
+ <div>
+ <p display="block" >
  <img src="https://user-images.githubusercontent.com/54235714/112763525-bfcaa400-903f-11eb-9fea-ac2e58e36859.png" alt="main4" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-
-
+ </p>
+<p display="block" >
  <img src="https://user-images.githubusercontent.com/54235714/112763601-189a3c80-9040-11eb-9b17-5cace6f1a9a8.png" alt="main4" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-
-
+</p>
+ </div>
 
 
 ### 기획의도
