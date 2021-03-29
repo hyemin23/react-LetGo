@@ -50,7 +50,7 @@
  본 프로젝트는 `useState()`와 `useEffect()` Hook을 활용하여 학습하고 & `firebaseDB`를 사용하여 진행하였습니다.
  호스팅은 git - `gh-pages` 을 이용하여 무료 호스팅 하였습니다.
 
-<h3>회원가입 & 로그인</h3>
+<h3>회원가입 & 로그인 & </h3>
 
   - 회원가입 : 일반회원가입과 Git(깃허브),Google Login(구글 로그인)을 통하여 간단한 가입이 가능합니다.
   - 로그인  : 로그인은 firebase DB를 통하여 password 암호화하였으며, cookie 값을 통한 password 인증 절차를 추가하였습니다.
