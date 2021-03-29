@@ -30,6 +30,11 @@
  </div>
 
 
+<p display="block" >
+ <img src="https://user-images.githubusercontent.com/54235714/112790922-62fcd700-909b-11eb-942e-d56a5a8e2048.png" alt="main4" width="49%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+</p>
+
+
 ### 기획의도
 <p>
   <h4>"걱정","근심" 여기에 놓고 가세요.</h4>
