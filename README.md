@@ -5,47 +5,44 @@
 
 > 말 못 할 사연이나 걱정거리들을 익명성 뒤에 거침없이 적고 떨쳐버리세요! 🖌
  
-### Login Page
+<h4 align="center"> Login Page </h4>
 <p display="block" align="center">
-<img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+<img src="https://user-images.githubusercontent.com/54235714/112762902-2d290580-903d-11eb-902b-9c785273b2d3.png" alt="main" width="50%" height="30%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
 </p>
 
 
-### Landing Page
+<h4 align="center">Landing Page</h4>
 <div  width="100%">
- <p display="inline-block !important" >
-<img src="https://user-images.githubusercontent.com/54235714/112763585-0ae4b700-9040-11eb-9f5d-acb9a4420e08.png" alt="main" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+<p display="block" align="center">
+<img src="https://user-images.githubusercontent.com/54235714/112763585-0ae4b700-9040-11eb-9f5d-acb9a4420e08.png" alt="main" width="50%" height="30%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
  </p>
  
-### Create,Update,Delete,Read
- <p display="inline-block !important"  >
-<img src="https://user-images.githubusercontent.com/54235714/112763410-52b70e80-903f-11eb-8609-72660915d027.png" alt="main3" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ <h4 align="center">Create,Update,Delete,Read</h4>
+<p display="block" align="center">
+<img src="https://user-images.githubusercontent.com/54235714/112763410-52b70e80-903f-11eb-8609-72660915d027.png" alt="main3" width="50%" height="30%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
  </p>
 </div>
  
- <div>
- 
- ### Profile Page 
- <p display="block" >
- <img src="https://user-images.githubusercontent.com/54235714/112763525-bfcaa400-903f-11eb-9fea-ac2e58e36859.png" alt="main4" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ <h4 align="center">Profile Page </h4>
+ <p display="block" align="center">
+ <img src="https://user-images.githubusercontent.com/54235714/112763525-bfcaa400-903f-11eb-9fea-ac2e58e36859.png" alt="main4" width="50%" height="30%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
  </p>
  
- ### Status Check
-<p display="block" >
- <img src="https://user-images.githubusercontent.com/54235714/112763601-189a3c80-9040-11eb-9b17-5cace6f1a9a8.png" alt="main4" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
-</p>
- </div>
-
-### Join Page
-<p display="block" >
- <img src="https://user-images.githubusercontent.com/54235714/112790922-62fcd700-909b-11eb-942e-d56a5a8e2048.png" alt="main4" width="60%" height="50%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+ 
+  <h4 align="center">Status Check </h4>
+<p display="block" align="center">
+ <img src="https://user-images.githubusercontent.com/54235714/112763601-189a3c80-9040-11eb-9b17-5cace6f1a9a8.png" alt="main4" width="50%" height="10%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
 </p>
 
+<h4 align="center">Join Page </h4>
+<p display="block" align="center">
+ <img src="https://user-images.githubusercontent.com/54235714/112790922-62fcd700-909b-11eb-942e-d56a5a8e2048.png" alt="main4" width="50%" height="30%" margin="0%" padding="0%" display="block" border="0" box-sizing="border-box"/>
+</p>
 
-### 📌프로젝트 소개 & 기능 소개📌
 
-### Login Page
-
+<h2 align="center">📌 &nbsp; 프로젝트 소개 & 기능 소개 &nbsp;📌 <h2/>
+ 
+### "놓고?"
 
    "걱정","근심" 여기에 놓고 가세요.
    "놓고" 프로젝트는 현대사회에 집과 일 반복적인 루틴 속에서 지쳐가는 사람들의 걱정과 근심을 조금이나마 해소하고자 기획한 사이트입니다.
